@@ -20,6 +20,8 @@ public class LaserPointer : MonoBehaviour {
     public LayerMask teleportMask; //Layer mask to filter areas which teleports are allowed, currently not being used but here for future use
     private bool shouldTeleport; //True when a valid teleport location is selected. Again, all surfaces are fair play right now
 
+    private ControllerGrabObject grabObjectScript;
+
     private SteamVR_Controller.Device controller { get { return SteamVR_Controller.Input((int)trackedObj.index); } }
 
     private void ShowLaser(RaycastHit hit)
@@ -63,6 +65,7 @@ public class LaserPointer : MonoBehaviour {
         laserTransform = laser.transform;
         reticle = Instantiate(teleportReticlePrefab);
         teleportReticleTransform = reticle.transform;
+        grabObjectScript = gameObject.GetComponent<ControllerGrabObject>();
     }
 
     // Use this for initialization
@@ -78,24 +81,62 @@ public class LaserPointer : MonoBehaviour {
             RaycastHit hit;
 
             //Execute this block if the raycast actually hits something.
-            if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask))
+            if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask) && !grabObjectScript.objectGrabbed)
             {
                 hitPoint = hit.point; //Stores the point where it hit
-                ShowLaser(hit);
+                //ShowLaser(hit);
                 reticle.SetActive(true); //Show teleport reticle
                 teleportReticleTransform.position = hitPoint + teleportReticleOffset; //Adds offset to position raycast hit so you can actually see the reticle
                 shouldTeleport = true;
+
+                if (hit.collider.tag == "Floor")
+                {
+                    Debug.Log("THIS IS THE FLOOR");
+                }
+                else
+                {
+                    Debug.Log("THIS IS NOT THE FLOOR");
+                }
             }
         }
         else
         {
-            laser.SetActive(false);
+            //laser.SetActive(false);
             reticle.SetActive(false);
         }
 
         if(controller.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && shouldTeleport)
         {
             Teleport();
+        }
+
+
+        if(controller.GetPress(SteamVR_Controller.ButtonMask.Trigger))
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100) && !grabObjectScript.objectGrabbed)
+            {
+                hitPoint = hit.point; //Stores the point where it hit
+                ShowLaser(hit);
+                //reticle.SetActive(true); //Show teleport reticle
+                //teleportReticleTransform.position = hitPoint + teleportReticleOffset; //Adds offset to position raycast hit so you can actually see the reticle
+                //shouldTeleport = true;
+
+                if (hit.collider.tag == "Floor")
+                {
+                    Debug.Log("THIS IS THE FLOOR");
+                }
+                else
+                {
+                    Debug.Log("THIS IS NOT THE FLOOR");
+                }
+            }
+
+        }
+        else
+        {
+            laser.SetActive(false);
         }
 
 

@@ -9,6 +9,7 @@ public class ControllerGrabObject : MonoBehaviour {
 
     private GameObject collidingObject; //Reference to object hand is on
     private GameObject objectInHand; //Reference to object actually being held onto
+    public bool objectGrabbed = false;
 
     private void SetCollidingObject(Collider col)
     {
@@ -90,6 +91,7 @@ public class ControllerGrabObject : MonoBehaviour {
             if (collidingObject)
             {
                 GrabObject();
+                objectGrabbed = true;
             }
         }
 
@@ -98,6 +100,7 @@ public class ControllerGrabObject : MonoBehaviour {
             if (objectInHand)
             {
                 ReleaseObject();
+                objectGrabbed = false;
             }
         }
 
