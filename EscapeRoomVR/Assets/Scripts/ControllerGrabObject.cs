@@ -88,7 +88,13 @@ public class ControllerGrabObject : MonoBehaviour {
 
         if (Controller.GetHairTriggerDown()) //If there is an object that can be grabbed when the player presses the trigger, grab it
         {
-            if (collidingObject)
+            //if (collidingObject)
+            //{
+            //    GrabObject();
+           //     objectGrabbed = true;
+            //}
+
+            if(collidingObject.tag != "Receiver" && collidingObject.tag != "Immovable")
             {
                 GrabObject();
                 objectGrabbed = true;

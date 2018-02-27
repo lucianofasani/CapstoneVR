@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Floor
   - Key
+  - Receiver
+  - Immovable
   layers:
   - Default
   - TransparentFX
