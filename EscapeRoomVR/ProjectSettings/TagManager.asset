@@ -8,6 +8,7 @@ TagManager:
   - Key
   - Receiver
   - Immovable
+  - UIButton
   layers:
   - Default
   - TransparentFX
