@@ -9,6 +9,7 @@ TagManager:
   - Receiver
   - Immovable
   - UIButton
+  - Door
   layers:
   - Default
   - TransparentFX

@@ -25,13 +25,15 @@ public class MenuButton : MonoBehaviour {
         {
             case ButtonMode.START:
                 Debug.Log("START THE GAME");
-                SceneManager.LoadScene("lfasani1", LoadSceneMode.Single);
+                SceneManager.LoadScene("lfasani3", LoadSceneMode.Single);
                 break;
             case ButtonMode.TUTORIAL:
                 Debug.Log("START THE TUTORIAL");
+                SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
                 break;
             case ButtonMode.EXIT:
                 Debug.Log("EXIT THE GAME");
+                Application.Quit();
                 break;
             default:
                 break;
