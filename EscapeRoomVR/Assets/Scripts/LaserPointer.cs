@@ -10,6 +10,7 @@ public class LaserPointer : MonoBehaviour {
     private GameObject laser; //stores a reference to an instance of the laser
     private Transform laserTransform; //transform component is stored
     private Vector3 hitPoint; //position where the laser and teleport reticle hit
+    private GameObject endOfLaser;
 
     public Transform cameraRigTransform;
     public GameObject teleportReticlePrefab;
@@ -19,6 +20,8 @@ public class LaserPointer : MonoBehaviour {
     public Vector3 teleportReticleOffset; //Reticle offset from the floor
     public LayerMask teleportMask; //Layer mask to filter areas which teleports are allowed, currently not being used but here for future use
     private bool shouldTeleport; //True when a valid teleport location is selected. Again, all surfaces are fair play right now
+
+    private ControllerGrabObject grabObjectScript;
 
     private SteamVR_Controller.Device controller { get { return SteamVR_Controller.Input((int)trackedObj.index); } }
 
@@ -63,6 +66,8 @@ public class LaserPointer : MonoBehaviour {
         laserTransform = laser.transform;
         reticle = Instantiate(teleportReticlePrefab);
         teleportReticleTransform = reticle.transform;
+        grabObjectScript = gameObject.GetComponent<ControllerGrabObject>();
+        endOfLaser = null;
     }
 
     // Use this for initialization
@@ -78,24 +83,81 @@ public class LaserPointer : MonoBehaviour {
             RaycastHit hit;
 
             //Execute this block if the raycast actually hits something.
-            if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask))
+            if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask) && !grabObjectScript.objectGrabbed)
             {
                 hitPoint = hit.point; //Stores the point where it hit
-                ShowLaser(hit);
+                //ShowLaser(hit);
                 reticle.SetActive(true); //Show teleport reticle
                 teleportReticleTransform.position = hitPoint + teleportReticleOffset; //Adds offset to position raycast hit so you can actually see the reticle
                 shouldTeleport = true;
+
+                if (hit.collider.tag == "Floor")
+                {
+                    Debug.Log("THIS IS THE FLOOR");
+                }
+                else
+                {
+                    Debug.Log("THIS IS NOT THE FLOOR");
+                }
             }
         }
         else
         {
-            laser.SetActive(false);
+            //laser.SetActive(false);
             reticle.SetActive(false);
         }
 
         if(controller.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && shouldTeleport)
         {
             Teleport();
+        }
+
+
+        if(controller.GetPress(SteamVR_Controller.ButtonMask.Trigger))
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100) && !grabObjectScript.objectGrabbed)
+            {
+                hitPoint = hit.point; //Stores the point where it hit
+                ShowLaser(hit);
+                //reticle.SetActive(true); //Show teleport reticle
+                //teleportReticleTransform.position = hitPoint + teleportReticleOffset; //Adds offset to position raycast hit so you can actually see the reticle
+                //shouldTeleport = true;
+
+                if (hit.collider.tag == "Floor")
+                {
+                    Debug.Log("THIS IS THE FLOOR");
+                }
+                else if(hit.collider.tag == "UIButton")
+                {
+                    Debug.Log("THIS IS A UI BUTTON");
+                    endOfLaser = hit.collider.gameObject;
+                }
+                else
+                {
+                    Debug.Log("THIS IS NOT THE FLOOR");
+                }
+
+            }
+            else
+            {
+                laser.SetActive(false); //If you're still holding the trigger down when you're no longer pointing at anything results in laser disappearing instead of sticking to last place it was valid
+                endOfLaser = null;
+            }
+
+        }
+        else
+        {
+            laser.SetActive(false);
+        }
+
+        if(controller.GetPressUp(SteamVR_Controller.ButtonMask.Trigger) && endOfLaser != null)
+        {
+            if (endOfLaser.tag == "UIButton")
+            {
+                endOfLaser.SendMessage("Action");
+            }
         }
 
 

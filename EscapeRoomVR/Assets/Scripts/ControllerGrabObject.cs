@@ -9,6 +9,9 @@ public class ControllerGrabObject : MonoBehaviour {
 
     private GameObject collidingObject; //Reference to object hand is on
     private GameObject objectInHand; //Reference to object actually being held onto
+    public bool objectGrabbed = false;
+
+    //private Rigidbody rbody;
 
     private void SetCollidingObject(Collider col)
     {
@@ -42,12 +45,24 @@ public class ControllerGrabObject : MonoBehaviour {
 
     private void GrabObject()
     {
+
         //Moves the GameObject inside of the player's hand and removes it from the collidingObject variable
         objectInHand = collidingObject;
         collidingObject = null;
+        //var joint = ;
 
-        var joint = AddFixedJoint(); //Adds joint that connects the controller to the object that is now being held
-        joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
+        if(objectInHand.tag == "Door")
+        {
+            var joint = AddSpringJoint(); //Adds joint that connects the controller to the object that is now being held
+            joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
+
+        }
+        else
+        {
+            var joint = AddFixedJoint(); //Adds joint that connects the controller to the object that is now being held
+            joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
+        }
+
     }
 
     private FixedJoint AddFixedJoint()
@@ -55,6 +70,16 @@ public class ControllerGrabObject : MonoBehaviour {
         FixedJoint fx = gameObject.AddComponent<FixedJoint>();
         fx.breakForce = 20000; //High values so joint doesn't easily break
         fx.breakTorque = 20000;
+        return fx;
+    }
+
+    private SpringJoint AddSpringJoint()
+    {
+        SpringJoint fx = gameObject.AddComponent<SpringJoint>();
+        fx.breakForce = 20000; //High values so joint doesn't easily break
+        fx.breakTorque = 20000;
+        fx.spring = 10;
+        fx.damper = 0.2f;
         return fx;
     }
 
@@ -68,13 +93,30 @@ public class ControllerGrabObject : MonoBehaviour {
             objectInHand.GetComponent<Rigidbody>().velocity = Controller.velocity; //Match throwing spin and speed
             objectInHand.GetComponent<Rigidbody>().angularVelocity = Controller.angularVelocity;
         }
+        else if(GetComponent<SpringJoint>())
+        {
+            GetComponent<SpringJoint>().connectedBody = null; //Destroy joint attachment
+            Destroy(GetComponent<SpringJoint>());
+
+            //objectInHand.GetComponent<Rigidbody>().velocity = Controller.velocity; //Match throwing spin and speed
+            //objectInHand.GetComponent<Rigidbody>().angularVelocity = Controller.angularVelocity;
+        }
 
         objectInHand = null; //Remove the reference to the GameObject that was in the player's hand since it should no longer be there
     }
 
+    private void AddForceToHinge()
+    {
+        objectInHand = collidingObject;
+        collidingObject = null;
+
+        var joint = AddSpringJoint(); //Adds joint that connects the controller to the object that is now being held
+        joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
+    }
+
     void Start()
     {
-
+        //rbody = null;
     }
 
     void Awake()
@@ -87,9 +129,21 @@ public class ControllerGrabObject : MonoBehaviour {
 
         if (Controller.GetHairTriggerDown()) //If there is an object that can be grabbed when the player presses the trigger, grab it
         {
-            if (collidingObject)
+
+           /* if(collidingObject.tag == "Door")
+            {
+                AddForceToHinge();
+            }
+            else if(collidingObject.tag != "Receiver" && collidingObject.tag != "Immovable")
             {
                 GrabObject();
+                objectGrabbed = true;
+            }*/
+
+            if (collidingObject.tag != "Receiver" && collidingObject.tag != "Immovable")
+            {
+                GrabObject();
+                objectGrabbed = true;
             }
         }
 
@@ -98,8 +152,12 @@ public class ControllerGrabObject : MonoBehaviour {
             if (objectInHand)
             {
                 ReleaseObject();
+                objectGrabbed = false;
+                //rbody = null;
             }
         }
+
+
 
 	}
 }
