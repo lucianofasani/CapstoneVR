@@ -9,6 +9,7 @@ public class ControllerGrabObject : MonoBehaviour {
 
     private GameObject collidingObject; //Reference to object hand is on
     private GameObject objectInHand; //Reference to object actually being held onto
+    public bool objectGrabbed = false;
 
     private void SetCollidingObject(Collider col)
     {
@@ -87,9 +88,16 @@ public class ControllerGrabObject : MonoBehaviour {
 
         if (Controller.GetHairTriggerDown()) //If there is an object that can be grabbed when the player presses the trigger, grab it
         {
-            if (collidingObject)
+            //if (collidingObject)
+            //{
+            //    GrabObject();
+           //     objectGrabbed = true;
+            //}
+
+            if(collidingObject.tag != "Receiver" && collidingObject.tag != "Immovable")
             {
                 GrabObject();
+                objectGrabbed = true;
             }
         }
 
@@ -98,6 +106,7 @@ public class ControllerGrabObject : MonoBehaviour {
             if (objectInHand)
             {
                 ReleaseObject();
+                objectGrabbed = false;
             }
         }
 
