@@ -8,6 +8,8 @@ TagManager:
   - Key
   - Receiver
   - Immovable
+  - UIButton
+  - Door
   layers:
   - Default
   - TransparentFX

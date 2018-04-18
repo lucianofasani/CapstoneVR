@@ -10,6 +10,7 @@ public class LaserPointer : MonoBehaviour {
     private GameObject laser; //stores a reference to an instance of the laser
     private Transform laserTransform; //transform component is stored
     private Vector3 hitPoint; //position where the laser and teleport reticle hit
+    private GameObject endOfLaser;
 
     public Transform cameraRigTransform;
     public GameObject teleportReticlePrefab;
@@ -66,6 +67,7 @@ public class LaserPointer : MonoBehaviour {
         reticle = Instantiate(teleportReticlePrefab);
         teleportReticleTransform = reticle.transform;
         grabObjectScript = gameObject.GetComponent<ControllerGrabObject>();
+        endOfLaser = null;
     }
 
     // Use this for initialization
@@ -127,16 +129,35 @@ public class LaserPointer : MonoBehaviour {
                 {
                     Debug.Log("THIS IS THE FLOOR");
                 }
+                else if(hit.collider.tag == "UIButton")
+                {
+                    Debug.Log("THIS IS A UI BUTTON");
+                    endOfLaser = hit.collider.gameObject;
+                }
                 else
                 {
                     Debug.Log("THIS IS NOT THE FLOOR");
                 }
+
+            }
+            else
+            {
+                laser.SetActive(false); //If you're still holding the trigger down when you're no longer pointing at anything results in laser disappearing instead of sticking to last place it was valid
+                endOfLaser = null;
             }
 
         }
         else
         {
             laser.SetActive(false);
+        }
+
+        if(controller.GetPressUp(SteamVR_Controller.ButtonMask.Trigger) && endOfLaser != null)
+        {
+            if (endOfLaser.tag == "UIButton")
+            {
+                endOfLaser.SendMessage("Action");
+            }
         }
 
 

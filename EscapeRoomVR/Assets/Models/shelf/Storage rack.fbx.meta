@@ -1,0 +1,190 @@
+fileFormatVersion: 2
+guid: 4a43f1a272155444d96086f3ffc9c9e6
+timeCreated: 1519705499
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Atom_Array_1
+    100002: Atom_Array_1_2
+    100004: Atom_Array_1_3
+    100006: Back
+    100008: Cube
+    100010: Cube_1
+    100012: Cube_1_2
+    100014: Cube_1_3
+    100016: Cube_2
+    100018: Cube_3
+    100020: Cube_4
+    100022: Cube_5
+    100024: Cube_6
+    100026: Fill
+    100028: Floor
+    100030: Key
+    100032: lights
+    100034: myOctaneSettings
+    100036: myOctaneSettings_1
+    100038: Null
+    100040: Null_1
+    100042: Null_2
+    100044: Rack
+    100046: Sides
+    100048: //RootNode
+    100050: Sweep
+    100052: Sweep_3
+    400000: Atom_Array_1
+    400002: Atom_Array_1_2
+    400004: Atom_Array_1_3
+    400006: Back
+    400008: Cube
+    400010: Cube_1
+    400012: Cube_1_2
+    400014: Cube_1_3
+    400016: Cube_2
+    400018: Cube_3
+    400020: Cube_4
+    400022: Cube_5
+    400024: Cube_6
+    400026: Fill
+    400028: Floor
+    400030: Key
+    400032: lights
+    400034: myOctaneSettings
+    400036: myOctaneSettings_1
+    400038: Null
+    400040: Null_1
+    400042: Null_2
+    400044: Rack
+    400046: Sides
+    400048: //RootNode
+    400050: Sweep
+    400052: Sweep_3
+    2100000: Car Paint - Matte Dark Gray
+    2100002: Metal - Stainless Steel Polished
+    2100004: No Name
+    2300000: Atom_Array_1
+    2300002: Atom_Array_1_2
+    2300004: Atom_Array_1_3
+    2300006: Cube
+    2300008: Cube_1
+    2300010: Cube_1_2
+    2300012: Cube_1_3
+    2300014: Cube_2
+    2300016: Cube_3
+    2300018: Cube_4
+    2300020: Cube_5
+    2300022: Cube_6
+    2300024: Sweep
+    2300026: Sweep_3
+    3300000: Atom_Array_1
+    3300002: Atom_Array_1_2
+    3300004: Atom_Array_1_3
+    3300006: Cube
+    3300008: Cube_1
+    3300010: Cube_1_2
+    3300012: Cube_1_3
+    3300014: Cube_2
+    3300016: Cube_3
+    3300018: Cube_4
+    3300020: Cube_5
+    3300022: Cube_6
+    3300024: Sweep
+    3300026: Sweep_3
+    4300000: Cube_1
+    4300002: Atom_Array_1
+    4300004: Cube
+    4300006: Cube_2
+    4300008: Cube_1_2
+    4300010: Atom_Array_1_2
+    4300012: Cube_3
+    4300014: Cube_4
+    4300016: Cube_1_3
+    4300018: Atom_Array_1_3
+    4300020: Cube_5
+    4300022: Cube_6
+    4300024: Sweep
+    4300026: Sweep_3
+    9500000: //RootNode
+    10800000: Back
+    10800002: Fill
+    10800004: Key
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
