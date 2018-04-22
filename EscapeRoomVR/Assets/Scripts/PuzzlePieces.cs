@@ -5,7 +5,7 @@ using UnityEngine;
 public class PuzzlePieces : MonoBehaviour {
 
     public List<GameObject> collidedObjs;
-    private int numObjsCollided = 0;
+    public int numObjsCollided = 0;
     public bool piecesFixed = false;
 
 	// Use this for initialization
@@ -30,10 +30,10 @@ public class PuzzlePieces : MonoBehaviour {
 
     void OnCollisionExit(Collision other)
     {
-        if (collidedObjs.Contains(other.gameObject))
+        if (!collidedObjs.Contains(other.gameObject))
         {
             numObjsCollided--;
-            piecesFixed = false;
+            //piecesFixed = false;
         }
     }
 }
