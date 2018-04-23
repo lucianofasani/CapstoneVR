@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 fileFormatVersion: 2
 guid: b27f3499887e04e3d9e57e6789f65fb2
 folderAsset: yes
@@ -7,3 +8,16 @@ DefaultImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+||||||| merged common ancestors
+=======
+fileFormatVersion: 2
+guid: 633fb9d3417b7854b890170e6a2d7324
+folderAsset: yes
+timeCreated: 1524079353
+licenseType: Free
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> 98ed997bd188fde1e4aed7a5c19f1767bdc610e6
