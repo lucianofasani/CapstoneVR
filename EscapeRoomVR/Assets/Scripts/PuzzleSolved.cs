@@ -24,10 +24,11 @@ public class PuzzleSolved : MonoBehaviour {
                 done = false;
                 break;
             }
-            if(i >= 8)
+            /*if(i >= 8)//this is plan B! Make sure at least 8 of the pieces are touching properly
             {
                 done = true;
-            }
+            }*/
+            done = true;
         }
         if (done)
         {

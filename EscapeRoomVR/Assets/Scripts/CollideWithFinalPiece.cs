@@ -13,7 +13,7 @@ public class CollideWithFinalPiece : MonoBehaviour {
     //therefore making complete collision less than likely
     //we will instead make sure that at least 8 pieces are colliding properly
     //and that all pieces are touching the final number piece before declaring it solved
-
+    //IF IT SEEMS TO NOT BE WORKING, TRY CHECKING THE BOX IN THE INSPECTOR WINDOW FOR THIS SCRIPT. YOU DISABLED IT REMEMBER
 	// Update is called once per frame
 	void Update () {
 		

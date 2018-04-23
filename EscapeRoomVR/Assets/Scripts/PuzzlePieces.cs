@@ -21,7 +21,7 @@ public class PuzzlePieces : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)//we're using ontriggerEnter with kinematics checked for all rigidbodies
     {
         if (collidedObjs.Contains(other.gameObject))
         {
@@ -30,7 +30,7 @@ public class PuzzlePieces : MonoBehaviour {
         }
     }
 
-    void OnCollisionExit(Collision other)
+    void OnTriggerExit(Collider other)
     {
         if (collidedObjs.Contains(other.gameObject))
         {
