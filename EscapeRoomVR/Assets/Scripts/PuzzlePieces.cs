@@ -5,7 +5,7 @@ using UnityEngine;
 public class PuzzlePieces : MonoBehaviour {
 
     public List<GameObject> collidedObjs;
-    public int numObjsCollided = 0;
+    public HashSet<GameObject> actualCollisions = new HashSet<GameObject>();
     public bool piecesFixed = false;
 
 	// Use this for initialization
@@ -15,25 +15,27 @@ public class PuzzlePieces : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if(collidedObjs.Count == actualCollisions.Count)
+        {
+            piecesFixed = true;
+        }
+    }
 
     void OnCollisionEnter(Collision other)
     {
         if (collidedObjs.Contains(other.gameObject))
         {
-            numObjsCollided++;
-            if (numObjsCollided == collidedObjs.Count)
-                piecesFixed = true;
+            actualCollisions.Add(other.gameObject);
+            Debug.Log("Entered with " + other.gameObject);
         }
     }
 
     void OnCollisionExit(Collision other)
     {
-        if (!collidedObjs.Contains(other.gameObject))
+        if (collidedObjs.Contains(other.gameObject))
         {
-            numObjsCollided--;
-            //piecesFixed = false;
+            actualCollisions.Remove(other.gameObject);
+            Debug.Log("Exited with " + other.gameObject);
         }
     }
 }

@@ -24,7 +24,10 @@ public class PuzzleSolved : MonoBehaviour {
                 done = false;
                 break;
             }
-            done = true;
+            if(i >= 8)
+            {
+                done = true;
+            }
         }
         if (done)
         {
