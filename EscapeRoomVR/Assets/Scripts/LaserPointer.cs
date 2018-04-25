@@ -134,6 +134,11 @@ public class LaserPointer : MonoBehaviour {
                     Debug.Log("THIS IS A UI BUTTON");
                     endOfLaser = hit.collider.gameObject;
                 }
+                else if(hit.collider.tag == "KeypadButton")
+                {
+                    Debug.Log("THIS IS THE KEYPAD BUTTON");
+                    endOfLaser = hit.collider.gameObject;
+                }
                 else
                 {
                     Debug.Log("THIS IS NOT THE FLOOR");
@@ -157,6 +162,10 @@ public class LaserPointer : MonoBehaviour {
             if (endOfLaser.tag == "UIButton")
             {
                 endOfLaser.SendMessage("Action");
+            }
+            else if(endOfLaser.tag == "KeypadButton")
+            {
+                endOfLaser.SendMessage("Press");
             }
         }
 

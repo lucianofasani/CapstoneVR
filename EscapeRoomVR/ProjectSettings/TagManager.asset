@@ -10,6 +10,8 @@ TagManager:
   - Immovable
   - UIButton
   - Door
+  - KeypadButton
+  - Switch
   layers:
   - Default
   - TransparentFX

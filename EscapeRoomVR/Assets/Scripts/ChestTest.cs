@@ -5,12 +5,13 @@ using UnityEngine;
 public class ChestTest : MonoBehaviour {
 
     public bool puzzleSolved = false;
-    
 
-	// Use this for initialization
-	void Start () {
-        
-	}
+    public LootCrate _lootCrate;
+
+    // Use this for initialization
+    void Start () {
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -24,6 +25,7 @@ public class ChestTest : MonoBehaviour {
         if(collider.tag == "Key")
         {
             puzzleSolved = true;
+            _lootCrate.Open();
         }
 
         //pickup = collider.gameObject;
