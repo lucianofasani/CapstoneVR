@@ -3,7 +3,25 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Floor
+  - Key
+  - Receiver
+  - Immovable
+  - UIButton
+  - Door
+  - riddleBoard1
+  - knife
+  - radio
+  - SB1
+  - SB2
+  - riddleBoard2
+  - S2
+  - nonKey
+  - primaryB
+  - keyBoard
+  - KeypadButton
+  - FinalKey
   layers:
   - Default
   - TransparentFX
@@ -13,7 +31,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Floor
   - 
   - 
   - 
