@@ -22,6 +22,7 @@ TagManager:
   - keyBoard
   - KeypadButton
   - FinalKey
+  - FinalKeyHole
   layers:
   - Default
   - TransparentFX

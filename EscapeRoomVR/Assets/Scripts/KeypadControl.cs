@@ -7,7 +7,7 @@ public class KeypadControl : MonoBehaviour {
     //public KeypadKeys keys = new KeypadKeys[12];
 
     public List<KeypadKeys> keys;
-    private string correctCode = "1234";
+    private string correctCode = "3796";
     private string userEntry;
     public LootCrate _lootCrate;
     public TextMesh textBox;

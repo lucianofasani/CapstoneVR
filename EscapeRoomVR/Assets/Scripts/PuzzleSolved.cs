@@ -12,7 +12,7 @@ public class PuzzleSolved : MonoBehaviour {
     // Use this for initialization
     void Start () {
         activate.SetActive(false);
-        lt = GetComponent<Light>();
+        //lt = GetComponent<Light>();
     }
 	
 	// Update is called once per frame
